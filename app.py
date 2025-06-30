@@ -5,11 +5,7 @@ from dining_recommender import DiningRecommender
 
 app = FastAPI()
 
-# CORS middleware
-origins = [
-    "http://localhost:3000",  # React default port
-    "localhost:3000"
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -28,7 +24,6 @@ def get_day_plan(city: str):
     Provides a day plan for a tourist in a given city, including weather and dining suggestions.
     """
     try:
-        # Get weather and dining type suggestion
         weather_data = weather_service.get_weather(city)
         dining_suggestion = weather_service.suggest_dining_type(weather_data)
 
@@ -39,7 +34,6 @@ def get_day_plan(city: str):
             "dining_plan": None
         }
 
-        # Get dining plan if outdoor is recommended
         if dining_suggestion == 'outdoor':
             dining_plan = dining_recommender.get_dining_plan(city)
             response["dining_plan"] = dining_plan
