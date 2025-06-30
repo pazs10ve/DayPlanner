@@ -76,20 +76,27 @@ function App() {
             <div>
               <h3>Dining Plan:</h3>
               {plannerData.parsed_dining_plan && plannerData.parsed_dining_plan.length > 0 ? (
-                <table className="dining-plan-table">
-                  <thead>
-                    <tr>
-                      {Object.keys(plannerData.parsed_dining_plan[0]).map(header => <th key={header}>{header}</th>)}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {plannerData.parsed_dining_plan.map((row, index) => (
-                      <tr key={index}>
-                        {Object.values(row).map((value, i) => <td key={i}>{value}</td>)}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                (() => {
+                  const headers = Object.keys(plannerData.parsed_dining_plan[0]);
+                  return (
+                    <table className="dining-plan-table">
+                      <thead>
+                        <tr>
+                          {headers.map(header => <th key={header}>{header}</th>)}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {plannerData.parsed_dining_plan.map((row, index) => (
+                          <tr key={index}>
+                            {headers.map(key => (
+                              <td key={key} data-label={key}>{row[key]}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  );
+                })()
               ) : (
                 <p>{plannerData.dining_plan}</p>
               )}

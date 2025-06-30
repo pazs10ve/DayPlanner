@@ -1,16 +1,22 @@
 .app-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 40px 20px;
+  color: var(--light-text-color);
   text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .app-header h1 {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary-color);
 }
 
 .app-header p {
-  margin: 5px 0 0;
+  margin: 10px 0 0;
   font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--secondary-color);
 }

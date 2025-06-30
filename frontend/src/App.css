@@ -1,104 +1,187 @@
 .App {
   text-align: center;
-}
-
-main {
   padding: 20px;
 }
 
 .input-section {
-  margin-bottom: 20px;
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .input-section input {
-  padding: 10px;
+  padding: 15px;
   font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 10px;
-  width: 300px;
+  border: 2px solid var(--border-color);
+  border-radius: 25px;
+  background-color: var(--card-background);
+  color: var(--light-text-color);
+  width: 350px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input-section input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 15px rgba(255, 111, 97, 0.5);
 }
 
 .input-section button {
-  padding: 10px 20px;
+  padding: 15px 30px;
   font-size: 1rem;
+  font-weight: 600;
   border: none;
-  background-color: #61dafb;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
   color: white;
-  border-radius: 4px;
+  border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .input-section button:hover {
-  background-color: #21a1f1;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .input-section button:disabled {
-  background-color: #ccc;
+  background: #555;
   cursor: not-allowed;
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .error {
-  color: red;
-  margin-bottom: 20px;
+  color: var(--primary-color);
+  background-color: rgba(233, 69, 96, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 600px;
 }
 
 .results-section {
-  margin-top: 20px;
-  padding: 20px;
-  border: 1px solid #eee;
-  border-radius: 8px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--card-background);
+  border-radius: 15px;
   text-align: left;
-  background-color: #f9f9f9;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 900px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
 }
 
 .results-section h2 {
   margin-top: 0;
-  color: #282c34;
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
 .results-section h3 {
-  color: #282c34;
-}
-
-.results-section ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.results-section li {
-  background-color: #fff;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
 }
 
 .dining-plan-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0 10px;
   margin-top: 20px;
 }
 
 .dining-plan-table th, .dining-plan-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
+  padding: 15px;
   text-align: left;
 }
 
 .dining-plan-table th {
-  background-color: #f2f2f2;
-  color: #333;
+  color: var(--primary-color);
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
-.dining-plan-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+.dining-plan-table tr {
+    background-color: #1e2a4a;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 .dining-plan-table tr:hover {
-  background-color: #f1f1f1;
+    background-color: #2a3a5a;
+    transform: scale(1.02);
+}
+
+.dining-plan-table td {
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dining-plan-table td:first-child {
+    border-left: 1px solid var(--border-color);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.dining-plan-table td:last-child {
+    border-right: 1px solid var(--border-color);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .input-section {
+    flex-direction: column;
+  }
+
+  .input-section input {
+    width: 100%;
+  }
+
+  .dining-plan-table, .dining-plan-table thead, .dining-plan-table tbody, .dining-plan-table th, .dining-plan-table td, .dining-plan-table tr {
+    display: block;
+  }
+
+  .dining-plan-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .dining-plan-table tr {
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+  }
+
+  .dining-plan-table td {
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+  }
+
+  .dining-plan-table td:before {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    transform: translateY(-50%);
+    content: attr(data-label);
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .dining-plan-table td:last-child {
+    border-bottom: 0;
+  }
 }
