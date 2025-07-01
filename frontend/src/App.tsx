@@ -26,7 +26,7 @@ function App() {
     setError(null);
     setPlannerData(null);
     try {
-      const response = await axios.get(`http://localhost:8000/planner/${city}`);
+      const response = await axios.get(`https://dayplanner-backend-j6y7.onrender.com/planner/${city}`);
       const data = response.data;
       const { dining_plan } = data;
 
